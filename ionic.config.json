@@ -1,6 +1,8 @@
 {
   "name": "BestPlace",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "pro_id": "8ba8b637"
 }
