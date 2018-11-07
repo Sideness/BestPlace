@@ -1,16 +1,36 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      {{ 'PROFILE' | translate:param }}
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content>
-  <ion-list>
+
+  <ion-card>
+
+    <img src="assets/imgs/bjork-live.jpg"/>
+
+    <ion-card-content>
+      <ion-card-title>
+        Julien (Moi)
+      </ion-card-title>
+      <p>
+        Premier test de page de profil basée sur la doc de Ionic. Cette page contiendra toutes les infos sur l'utilisateur
+      </p>
+    </ion-card-content>
+
     <ion-item>
-      <ion-icon name="person" item-start></ion-icon>
-      Mes informations personnelles
+      <ion-icon name='images' item-start style="color: #d03e84"></ion-icon>
+      Album photo
+      <ion-badge item-end>12</ion-badge>
     </ion-item>
-  </ion-list>
+
+    <ion-item>
+      <ion-icon name='heart' item-start style="color: #fa4545"></ion-icon>
+      Lieux favoris
+      <ion-badge item-end>3</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name='notifications' item-start style="color: #55acee"></ion-icon>
+      Notifications
+      <ion-badge item-end>3</ion-badge>
+    </ion-item>
+
+  </ion-card>
+
 </ion-content>
