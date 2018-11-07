@@ -14,6 +14,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Globalization } from '@ionic-native/globalization';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
+    Globalization,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

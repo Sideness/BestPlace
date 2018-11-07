@@ -1,5 +1,5 @@
 <ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Map" tabIcon="map"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Profile" tabIcon="person"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Community" tabIcon="globe"></ion-tab>
+  <ion-tab [root]="tab1Root" [tabTitle]="('MAP' | translate) || '&nbsp;'" tabIcon="map"></ion-tab>
+  <ion-tab [root]="tab2Root" [tabTitle]="('PROFILE' | translate) || '&nbsp;'" tabIcon="person"></ion-tab>
+  <ion-tab [root]="tab3Root" [tabTitle]="('COMMUNITY' | translate) || '&nbsp;'" tabIcon="globe"></ion-tab>
 </ion-tabs>
