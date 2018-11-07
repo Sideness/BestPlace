@@ -27,9 +27,13 @@ export class MapPage {
     }).addTo(this.map);
     this.geolocation.getCurrentPosition().then((resp) => {
       this.map.setView([resp.coords.latitude, resp.coords.longitude], 14);
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
+      let markerGroup = leaflet.featureGroup();
+      let marker: any = leaflet.marker([resp.coords.latitude, resp.coords.longitude]).on('click', () => {
+        alert('Marker clicked');
+      })
+      markerGroup.addLayer(marker);
+      this.map.addLayer(markerGroup);
+      });
   }
 
 }
