@@ -3,6 +3,8 @@ import { NavController, Content } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import leaflet from 'leaflet';
 
+import { SearchPlacePage } from './searchPlace';
+
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html'
@@ -13,8 +15,13 @@ export class MapPage {
   content:Content;
   @ViewChild('map') mapContainer: ElementRef;
   map: any;
-  constructor(public navCtrl: NavController, private geolocation: Geolocation) {
 
+  pushPage: any;
+
+  private searchVisible: boolean = false;
+
+  constructor(public navCtrl: NavController, private geolocation: Geolocation) {
+    this.pushPage = SearchPlacePage;
   }
 
   ionViewDidEnter() {
@@ -36,17 +43,6 @@ export class MapPage {
       markerGroup.addLayer(marker);
       this.map.addLayer(markerGroup);
       });
-    /* let watch = this.geolocation.watchPosition();
-    watch.subscribe((data) => {
-      if (data.coords !== undefined) {
-        this.map.setView([data.coords.latitude, data.coords.longitude], 14);
-      }
-    }); */
-  }
-
-  onSearchButtonClicked(event) {
-    let yOffset = document.getElementById('searchZone').offsetTop;
-    this.content.scrollTo(0, yOffset, 500)
   }
 
 }

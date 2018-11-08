@@ -7,6 +7,7 @@ import { CommunityPage } from '../pages/community/community';
 import { ProfilePage } from '../pages/profile/profile';
 import { MapPage } from '../pages/map/map';
 import { TabsPage } from '../pages/tabs/tabs';
+import { SearchPlacePage } from '../pages/map/searchPlace';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,7 +24,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     CommunityPage,
     ProfilePage,
     MapPage,
-    TabsPage
+    TabsPage,
+    SearchPlacePage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     CommunityPage,
     ProfilePage,
     MapPage,
-    TabsPage
+    TabsPage,
+    SearchPlacePage
   ],
   providers: [
     StatusBar,
