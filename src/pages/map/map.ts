@@ -4,9 +4,10 @@ import { Geolocation } from '@ionic-native/geolocation';
 import leaflet from 'leaflet';
 import { ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { LoadingController } from 'ionic-angular';
 
 import { SearchPlacePage } from './searchPlace';
-import { AddPicturePage } from '../addPicture/addPicture'
+import { AddPicturePage } from '../addPicture/addPicture';
 
 @Component({
   selector: 'page-map',
@@ -25,7 +26,7 @@ export class MapPage {
   private myPositionMarker: any;
 
   constructor(public navCtrl: NavController, private geolocation: Geolocation, 
-    public toastCtrl: ToastController, private camera: Camera) {
+    public toastCtrl: ToastController, private camera: Camera, public loadingCtrl: LoadingController) {
     this.pushPage = SearchPlacePage;
   }
 
@@ -70,13 +71,13 @@ export class MapPage {
   }
 
   openCamera() {
+    this.presentLoading();
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
-    
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
@@ -86,5 +87,13 @@ export class MapPage {
     }, (err) => {
      // Handle error
     });
+  }
+
+  presentLoading() {
+    const loader = this.loadingCtrl.create({
+      content: "Veuillez patienter",
+      dismissOnPageChange: true
+    });
+    loader.present();
   }
 }

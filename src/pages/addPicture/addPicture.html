@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Envoyer une photo</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img [src]="pictureTaken" *ngIf="pictureTaken">
+        </ion-thumbnail>
+        <h2>Préparez l'envoi...</h2>
+        <p>{{this.getDate()}}</p>
+      </ion-item>
+      <ion-item>
+
+      </ion-item>
+    </ion-list>
+    <button style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);" 
+            ion-button round (click)="sendPicture()">Envoyer</button>
+</ion-content>
