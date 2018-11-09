@@ -5,6 +5,7 @@ import leaflet from 'leaflet';
 import { ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { LoadingController } from 'ionic-angular';
+import { ActionSheetController } from 'ionic-angular';
 
 import { SearchPlacePage } from './searchPlace';
 import { AddPicturePage } from '../addPicture/addPicture';
@@ -25,8 +26,12 @@ export class MapPage {
   private searchVisible: boolean = false;
   private myPositionMarker: any;
 
-  constructor(public navCtrl: NavController, private geolocation: Geolocation, 
-    public toastCtrl: ToastController, private camera: Camera, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, 
+              private geolocation: Geolocation, 
+              public toastCtrl: ToastController, 
+              private camera: Camera, 
+              public loadingCtrl: LoadingController,
+              public actionSheetCtrl: ActionSheetController) {
     this.pushPage = SearchPlacePage;
   }
 
@@ -63,9 +68,17 @@ export class MapPage {
       this.map.setView([resp.coords.latitude, resp.coords.longitude], 14);
       this.myPositionMarker = leaflet.featureGroup();
       let marker: any = leaflet.marker([resp.coords.latitude, resp.coords.longitude]).on('click', () => {
-        alert('Marker clicked');
+        this.presentActionSheet();
+      });
+      let marker2: any = leaflet.marker([resp.coords.latitude + 0.009, resp.coords.longitude + 0.009]).on('click', () => {
+        this.presentActionSheet();
+      });
+      let marker3: any = leaflet.marker([resp.coords.latitude - 0.005, resp.coords.longitude - 0.009]).on('click', () => {
+        this.presentActionSheet();
       });
       this.myPositionMarker.addLayer(marker);
+      this.myPositionMarker.addLayer(marker2);
+      this.myPositionMarker.addLayer(marker3);
       this.map.addLayer(this.myPositionMarker);
     });
   }
@@ -95,5 +108,31 @@ export class MapPage {
       dismissOnPageChange: true
     });
     loader.present();
+  }
+
+  presentActionSheet() {
+    const actionSheet = this.actionSheetCtrl.create({
+      title: 'Choisir une action pour ce lieu...',
+      buttons: [
+        {
+          text: 'Voir les photos',
+          handler: () => {
+            console.log('Destructive clicked');
+          }
+        },{
+          text: 'Ajouter une photo',
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        },{
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 }
