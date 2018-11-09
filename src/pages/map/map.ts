@@ -9,6 +9,7 @@ import { ActionSheetController } from 'ionic-angular';
 
 import { SearchPlacePage } from './searchPlace';
 import { AddPicturePage } from '../addPicture/addPicture';
+import { GridPicturesPage } from '../gridPictures/gridPictures';
 
 @Component({
   selector: 'page-map',
@@ -47,7 +48,6 @@ export class MapPage {
     return new Promise((resolve) => {
       this.map = leaflet.map("map").fitWorld();
       leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attributions: 'www.tphangout.com',
         maxZoom: 18
       }).addTo(this.map);
       resolve();
@@ -119,7 +119,7 @@ export class MapPage {
         {
           text: 'Voir les photos',
           handler: () => {
-            console.log('Destructive clicked');
+            this.navCtrl.push(GridPicturesPage);
           }
         },{
           text: 'Ajouter une photo',

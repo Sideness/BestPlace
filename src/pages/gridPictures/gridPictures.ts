@@ -8,7 +8,28 @@ import { NavController } from 'ionic-angular';
 })
 export class GridPicturesPage {
 
-  constructor(public navCtrl: NavController, ) {
+    private grid: any;
+    private images: any = ['assets/imgs/puppies.jpg', 'assets/imgs/puppies2.jpg',
+    'assets/imgs/puppies3.jpg', 'assets/imgs/puppies.jpg',
+    'assets/imgs/puppies5.jpg'];
+
+  constructor(public navCtrl: NavController) {
+    this.grid = Array(Math.ceil(this.images.length/2));
+  }
+
+  ionViewDidLoad() {
+
+    let rowNum = 0; //counter to iterate over the rows in the grid
+    for (let i = 0; i < this.images.length; i+=2) { //iterate images
+      this.grid[rowNum] = Array(2); //declare two elements per row
+      if (this.images[i]) { //check file URI exists
+        this.grid[rowNum][0] = this.images[i] //insert image
+      }
+      if (this.images[i+1]) { //repeat for the second image
+        this.grid[rowNum][1] = this.images[i+1]
+      }
+      rowNum++; //go on to the next row
+    }
 
   }
 

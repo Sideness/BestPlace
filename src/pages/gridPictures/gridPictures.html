@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Photos prises à ce lieu...</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-6 col-md-4 col-xl-3 *ngFor="let image of [1,2,3,4,5]">
+                    <div class="image-container" [style.background-image]="'url(assets/imgs/puppies' + image + '.jpg)'"></div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>       
+    </div>
+</ion-content>
