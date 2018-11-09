@@ -9,11 +9,20 @@
         <ion-thumbnail item-start>
           <img [src]="pictureTaken" *ngIf="pictureTaken">
         </ion-thumbnail>
-        <h2>Préparez l'envoi...</h2>
-        <p>{{this.getDate()}}</p>
+        <ion-label floating>Description...</ion-label>
+        <ion-textarea type="text"></ion-textarea>
       </ion-item>
       <ion-item>
-
+        <ion-icon name="locate" item-start></ion-icon>
+          {{this.getChosenLocation()}}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="people" item-start></ion-icon>
+          {{this.getFriendsIdentified()}}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="calendar" item-start></ion-icon>
+          {{this.getDate()}}
       </ion-item>
     </ion-list>
     <button style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);" 

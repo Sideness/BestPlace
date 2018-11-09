@@ -9,6 +9,9 @@ import { LoadingController } from 'ionic-angular';
 export class AddPicturePage {
 
   private pictureTaken: string;
+  private chosenLocation: any;
+  private friendsIdentified: any;
+  private description: string;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
@@ -25,7 +28,28 @@ export class AddPicturePage {
   }
 
   getDate() {
-    return "16/10/2022";
+    return new Date().toDateString();
+  }
+
+  getChosenLocation() {
+    if(this.chosenLocation === undefined) {
+      return "Choisir le lieu...";
+    }
+    return this.chosenLocation;
+  }
+
+  getFriendsIdentified() {
+    if(this.friendsIdentified === undefined) {
+      return "Identifier des amis...";
+    }
+    // Return list of friends...
+  }
+
+  getDescription() {
+    if(this.description === undefined) {
+      return "Description...";
+    }
+    return this.description;
   }
 
   sendPicture() {
