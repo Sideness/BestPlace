@@ -25,6 +25,7 @@ export class MapPage {
 
   private searchVisible: boolean = false;
   private myPositionMarker: any;
+  private currentCoordinates: any;
 
   constructor(public navCtrl: NavController, 
               private geolocation: Geolocation, 
@@ -62,6 +63,7 @@ export class MapPage {
 
     toast.present(toast);
     this.geolocation.getCurrentPosition().then((resp) => {
+      this.currentCoordinates = resp;
       if (this.myPositionMarker !== undefined) {
         this.myPositionMarker.remove();
       }
@@ -96,7 +98,7 @@ export class MapPage {
      // If it's base64 (DATA_URL):
      let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-     this.navCtrl.push(AddPicturePage, { image: base64Image });
+     this.navCtrl.push(AddPicturePage, { image: base64Image, position: this.currentCoordinates });
     }, (err) => {
      // Handle error
     });
@@ -122,7 +124,7 @@ export class MapPage {
         },{
           text: 'Ajouter une photo',
           handler: () => {
-            console.log('Archive clicked');
+            this.openCamera();
           }
         },{
           text: 'Cancel',

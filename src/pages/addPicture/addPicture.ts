@@ -17,6 +17,7 @@ export class AddPicturePage {
               public navParams: NavParams, 
               public loadingCtrl: LoadingController) {
     this.pictureTaken = navParams.get('image');
+    this.chosenLocation = navParams.get('position');
   }
 
   ionViewDidEnter() {
@@ -35,7 +36,8 @@ export class AddPicturePage {
     if(this.chosenLocation === undefined) {
       return "Choisir le lieu...";
     }
-    return this.chosenLocation;
+    return "Position actuelle";
+    // return this.chosenLocation;
   }
 
   getFriendsIdentified() {
