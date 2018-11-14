@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { ViewPicturePage } from '../viewPicture/viewPicture';
+
 
 @Component({
   selector: 'page-grid-pictures',
@@ -31,6 +33,11 @@ export class GridPicturesPage {
       rowNum++; //go on to the next row
     }
 
+  }
+
+  openPictureView(image) {
+    let pathToImage = 'assets/imgs/puppies' + image + '.jpg';
+    this.navCtrl.push(ViewPicturePage, { pathToImage: pathToImage });
   }
 
 }

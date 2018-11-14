@@ -44,7 +44,6 @@ export class MapPage {
   }
 
   loadmap() {
-    console.log('LOAD MAP');
     return new Promise((resolve) => {
       this.map = leaflet.map("map").fitWorld();
       leaflet.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SearchPlacePage } from '../pages/map/searchPlace';
 import { AddPicturePage } from '../pages/addPicture/addPicture';
 import { GridPicturesPage } from '../pages/gridPictures/gridPictures';
+import { ViewPicturePage } from '../pages/viewPicture/viewPicture';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,7 +31,8 @@ import { Camera } from '@ionic-native/camera';
     TabsPage,
     SearchPlacePage,
     AddPicturePage,
-    GridPicturesPage
+    GridPicturesPage,
+    ViewPicturePage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { Camera } from '@ionic-native/camera';
     TabsPage,
     SearchPlacePage,
     AddPicturePage,
-    GridPicturesPage
+    GridPicturesPage,
+    ViewPicturePage
   ],
   providers: [
     StatusBar,
